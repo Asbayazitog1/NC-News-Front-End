@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import ArticleList from "./article-list"
 
-const HomeMain =({setArticle_id}) =>{
+const HomeMain =() =>{
    
     return <section>
     
-        <ArticleList setArticle_id={setArticle_id}/>
+        <ArticleList />
     </section>
 
 }

@@ -15,8 +15,8 @@ function App() {
     <Header/>
       <NavBar/>
       <Routes>
-        <Route path = '/' element={<HomeMain setArticle_id={setArticle_id}/>}/>
-        <Route path = '/single-article-main' element={<SingleArticleMain article_id={article_id}/>}/>
+        <Route path = '/' element={<HomeMain />}/>
+        <Route path = '/articles/:article_id' element={<SingleArticleMain />}/>
       </Routes>
       
     </div>

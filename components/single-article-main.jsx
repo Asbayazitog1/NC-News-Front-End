@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import { getArticlesByArticleID } from "../api"
+import { useParams } from 'react-router-dom';
 
-const SingleArticleMain =({article_id})=>{
+const SingleArticleMain =()=>{
     const[ isloading,setIsloading] =useState(true)
     const [article,setArticle]=useState({})
+    const{article_id} = useParams()
    useEffect(()=>{
-    console.log(article_id)
+    
     getArticlesByArticleID(article_id).then(({data})=>{
         
        setArticle(data.articles)
