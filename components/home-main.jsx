@@ -1,30 +1,11 @@
 import { useEffect, useState } from "react"
-import { getArticles } from "../api"
+import ArticleList from "./article-list"
 
-const HomeMain =() =>{
-    const[ isloading,setIsloading] =useState(true)
-    const [articles,setArticles]= useState([])
-    useEffect(()=>{
-        getArticles().then(({data}) =>{
-            setArticles(data.articles)
-            setIsloading(false)
-        })
-    },[])
-    if(isloading){
-        return <h2>loading...</h2>
-    }
+const HomeMain =({setArticle_id}) =>{
+   
     return <section>
     
-        <ul id="article-list">
-            {    
-            articles.map(article =>{
-                return <section key={article.article_id} id="artile-list-item">
-                    <li id="" >{article.title}</li>
-                    <img src={article.article_img_url} alt="" id="article-img" />
-                </section> 
-            })
-        }
-        </ul>
+        <ArticleList setArticle_id={setArticle_id}/>
     </section>
 
 }
