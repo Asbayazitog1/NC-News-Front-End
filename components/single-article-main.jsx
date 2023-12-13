@@ -20,6 +20,7 @@ const SingleArticleMain =()=>{
     setArticle((currArticle)=>{
     return {...currArticle,votes: currArticle.votes +1}
     })
+    setErr("") 
     updateArticleByArticleId(article_id,{inc_votes:1}).catch((err) =>{
         setErr(err.message)
         setArticle((currArticle)=>{
@@ -31,6 +32,7 @@ const SingleArticleMain =()=>{
     setArticle((currArticle)=>{
         return {...currArticle,votes: currArticle.votes -1}
         })
+    setErr("")    
         updateArticleByArticleId(article_id,{inc_votes:-1}).catch((err) =>{
             setErr(err.message)
             setArticle((currArticle)=>{
