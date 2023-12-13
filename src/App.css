@@ -7,3 +7,6 @@
 #article-img{
   max-width: 10vw;
 }
+#comment-list{
+  border: black solid;
+}
