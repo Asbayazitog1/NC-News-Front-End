@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
-import { getArticlesByArticleID, getCommentByArticleID} from "../api"
+import { getArticlesByArticleID} from "../api"
 import { useParams } from 'react-router-dom';
+import CommentList from "./comment-list";
 
 const SingleArticleMain =()=>{
-    const [comments,setComments] = useState([])
+    
     const[ isloading,setIsloading] =useState(true)
     const [article,setArticle]=useState({})
     const{article_id} = useParams()
    useEffect(()=>{
-    Promise.all([getArticlesByArticleID(article_id),getCommentByArticleID(article_id)])
-    .then((result)=>{
-       setArticle(result[0].data.articles)
-       setComments(result[1].data.comments)
+    getArticlesByArticleID(article_id)
+    .then(({data})=>{
+       setArticle(data.articles)
        setIsloading(false)
       
     })
@@ -27,17 +27,7 @@ return <section>
     <p>{article.votes}</p>
     <p>By: {article.author}</p>
     </section>
-    <section id="comment-list">
-    <ul>
-        {comments.map(comment=>{
-            return <section key={comment.comment_id}>
-                <p>{comment.body}</p>
-                <p>{comment.author}</p>
-                <p>votes: {comment.votes}</p>
-            </section>
-        })}
-    </ul>
-    </section>
+    <CommentList/>
 </section>
 }
 export default SingleArticleMain
