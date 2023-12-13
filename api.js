@@ -19,13 +19,13 @@ return newsApi.get(`/articles/${article_id}/comments`)
 }
 
 export const addNewCommentByArticleId=(article_id,newComment)=>{
-    return newsApi.post(`/articles/${article_id}/comments`).send(newComment)
+    return newsApi.post(`/articles/${article_id}/comments`,newComment)
 }
 
 export const updateArticleByArticleId =(article_id,updatedArticle)=>{
-    return newsApi.patch(`/api/articles/${article_id}`).send(updatedArticle)
+    return newsApi.patch(`/articles/${article_id}`,updatedArticle)
 }
 
 export const deleteCommentByCommentId=(comment_id)=>{
-    return newsApi.delete(`/api/comments/${comment_id}`)
+    return newsApi.delete(`/comments/${comment_id}`)
 }
