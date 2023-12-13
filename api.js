@@ -15,11 +15,11 @@ export const getArticlesByArticleID =(article_id) =>{
 return newsApi.get(`/articles/${article_id}`)
 }
 export const getCommentByArticleID =(article_id)=>{
-return newsApi.get(`/api/articles/${article_id}/comments`)
+return newsApi.get(`/articles/${article_id}/comments`)
 }
 
 export const addNewCommentByArticleId=(article_id,newComment)=>{
-    return newsApi.post(`/api/articles/${article_id}/comments`).send(newComment)
+    return newsApi.post(`/articles/${article_id}/comments`).send(newComment)
 }
 
 export const updateArticleByArticleId =(article_id,updatedArticle)=>{
