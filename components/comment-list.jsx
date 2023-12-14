@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom';
 import { getCommentByArticleID } from "../api";
+import AddComment from "./add-comment";
 const CommentList =() =>{
     const{article_id} = useParams()
     const [comments,setComments] = useState([])
@@ -19,6 +20,9 @@ const CommentList =() =>{
        }
 
        return <section id="comment-list">
+        <AddComment>
+            <button> add comment</button>
+        </AddComment>
        <ul>
           {
           comments.map(comment=>{
