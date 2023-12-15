@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import { addNewCommentByArticleId } from "../api"
 
 const AddComment =({setComments}) =>{
+const [commentInput,setCommentInput] = useState("")
+const [erorr ,setErorr] = useState("")
 const [ishidden,setIsHidden]= useState(true)
 const {article_id} = useParams()
 const handleSubmit =(event) =>{
@@ -19,10 +21,15 @@ setComments((currComments)=>{
 
 })
 }).catch((err)=>{
-
+setIsHidden(false)
+setErorr("something went wrong, Try again!")
 })
 setIsHidden(!ishidden)
+setErorr("")
 }
+const habdleChange =(event)=>{
+setCommentInput(event.target.value)
+ }
 const handleClick=()=>{
 setIsHidden(!ishidden)
 }
@@ -36,9 +43,10 @@ return <form  onSubmit={handleSubmit}>
         <input  type="text" name="" id="username-input" />
     </label>
     <label htmlFor="comment-input">comment:
-        <input  type="text" name="" id="comment-input" />
+        <textarea value={commentInput} type="text" name="" id="comment-input" onChange={habdleChange} />
     </label>
     <button type="submit" >submit</button>
+    <p id="error-msg">{erorr}</p>
 </form>
 }
 

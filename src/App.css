@@ -16,3 +16,6 @@
 .bad{
   background-color: red;
 }
+#error-msg{
+  color: red;
+}
