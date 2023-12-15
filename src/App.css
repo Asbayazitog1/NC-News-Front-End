@@ -10,3 +10,12 @@
 #comment-list{
   border: black solid;
 }
+.good{
+  background-color: green;
+}
+.bad{
+  background-color: red;
+}
+#error-msg{
+  color: red;
+}

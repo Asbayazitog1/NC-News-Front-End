@@ -14,15 +14,13 @@ const CommentList =() =>{
             setCommentExist(false)
           }
         })
-       },[])
+       },[comments])
        if(!commentExist){
         return <h2>No comments!</h2>
        }
 
        return <section id="comment-list">
-        <AddComment>
-            <button> add comment</button>
-        </AddComment>
+        <AddComment setComments={setComments}/>
        <ul>
           {
           comments.map(comment=>{
