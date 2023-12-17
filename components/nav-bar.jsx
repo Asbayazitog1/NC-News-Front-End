@@ -1,4 +1,8 @@
 const NavBar =()=>{
-return <h2>Nav bar</h2>
+
+return <section id="nav-bar-section">
+    
+    
+</section> 
 }
 export default NavBar

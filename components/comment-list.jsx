@@ -24,10 +24,10 @@ const CommentList =() =>{
        <ul>
           {
           comments.map(comment=>{
-              return <section key={comment.comment_id}>
-                  <p>{comment.body}</p>
-                  <p>{comment.author}</p>
-                  <p>votes: {comment.votes}</p>
+              return <section id="comment-list-section" key={comment.comment_id}>
+                  <p id="comment-body">{comment.body}</p>
+                  <p id="comment-author">{comment.author}</p>
+                  <p id="comment-votes">votes: {comment.votes}</p>
               </section>
           })}
       </ul>

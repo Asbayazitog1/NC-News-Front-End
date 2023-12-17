@@ -44,19 +44,19 @@ const SingleArticleMain =()=>{
    if(isloading){
     return <h2>loading...</h2>
 }
-return <section>
-    <section id="article-details">
-    <p>{article.title}</p>
-    <img src={article.article_img_url} alt="" />
-    <p>{article.body}</p>
+return <section id="single-article-section">
+    <section id="article-details-section">
+    <p id="single-article-title">{article.title}</p>
+    <img id="single-article-img" src={article.article_img_url} alt="" />
+    <p id="single-article-body">{article.body}</p>
     <section id="votes-section">
-    <p id="votes-number">{article.votes}</p>
-    <button id="votes-plus-button" onClick={handlePlusClick}>+</button>
-    <button id="votes-minus-button" onClick={handleMinusButton}>-</button>
-    <p>{err}</p>
+    <p id="single-article-votes-number">{article.votes}</p>
+    <button id="single-article-votes-plus-button" onClick={handlePlusClick}>+</button>
+    <button id="single-article-votes-minus-button" onClick={handleMinusButton}>-</button>
+    <p id="single-article-error-msg" >{err}</p>
     </section>
     
-    <p>By: {article.author}</p>
+    <p id="single-article-author">By: {article.author}</p>
     </section>
     <CommentList/>
 </section>

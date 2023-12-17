@@ -8,7 +8,7 @@ export const getTopics =()=>{
 return newsApi.get(`/topics`)
 }
 
-export const getArticles =(query)=>{
+export const getArticles =(query )=>{
 return newsApi.get(`/articles${query}`)
 }
 export const getArticlesByArticleID =(article_id) =>{

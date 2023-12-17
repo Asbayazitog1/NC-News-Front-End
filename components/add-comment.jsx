@@ -38,15 +38,15 @@ if(ishidden){
         Add comment
         </button></section>
 }
-return <form  onSubmit={handleSubmit}>
-    <label htmlFor="username-input">Username:
-        <input  type="text" name="" id="username-input" />
+return <form id="add-comment-form"  onSubmit={handleSubmit}>
+    <label className="add-comment-content" htmlFor="username-input">Username:
+        <input className="add-comment-content"  type="text" name="" id="username-input" />
     </label>
-    <label htmlFor="comment-input">comment:
-        <textarea value={commentInput} type="text" name="" id="comment-input" onChange={habdleChange} />
+    <label className="add-comment-content"  htmlFor="add-comment-input">comment:
+        <textarea className="add-comment-content"  value={commentInput} type="text" name="" id="add-comment-input" onChange={habdleChange} />
     </label>
-    <button type="submit" >submit</button>
-    <p id="error-msg">{erorr}</p>
+    <button className="add-comment-content"  id="add-comment-submit-button" type="submit" >submit</button>
+    <p className="add-comment-content"  id="error-msg">{erorr}</p>
 </form>
 }
 
