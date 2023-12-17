@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom'
 
 const ArticleList =() =>{
 
-
+    const [query,setQuery] =useState("")
     const[ isloading,setIsloading] =useState(true)
     const [articles,setArticles]= useState([])
     useEffect(()=>{
-        getArticles().then(({data}) =>{
+        getArticles(query).then(({data}) =>{
             setArticles(data.articles)
             setIsloading(false)
         })
