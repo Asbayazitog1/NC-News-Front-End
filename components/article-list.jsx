@@ -4,25 +4,27 @@ import {Link, useSearchParams} from 'react-router-dom'
 
 
 const ArticleList =({topics}) =>{
-    const [searchParams,setSearchParams] =useSearchParams()
-    const [query,setQuery] = useState("")
+    const [searchParams,setSearchParams] =useSearchParams({topic: ""})
     const[ isloading,setIsloading] =useState(true)
     const [articles,setArticles]= useState([])
     const topicQuery = searchParams.get("topic")
-    useEffect(()=>{
-        
-    getArticles(query).then(({data}) =>{
-            setArticles(data.articles)
-
-            setIsloading(false)
-        })
-    },[articles,topicQuery])
+    const [query,setQuery] = useState(`?${topicQuery}`)
     const handleClick =(topic) =>{
         setIsloading(true)
         setArticles([])
         setSearchParams({topic: topic.slug})
-        setQuery(`?${searchParams.toString()}`)
+        console.log(topic)
+        
     }
+    useEffect(()=>{
+        console.log(query,"----useeffect")
+        
+        getArticles(query).then(({data}) =>{
+                setArticles(data.articles)
+                setQuery(`?${searchParams.toString()}`)
+                setIsloading(false)
+            })
+        },[query,setSearchParams])
     if(isloading){
         return <h2>loading...</h2>
     }
