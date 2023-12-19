@@ -4,7 +4,8 @@ import {Link, useSearchParams} from 'react-router-dom'
 
 
 const ArticleList =({topics}) =>{
-    const [searchParams,setSearchParams] =useSearchParams({topic: ""})
+    const [errMsg,setErrMsg] =useState()
+    const [searchParams,setSearchParams] =useSearchParams({topic: "", sort_by: ""})
     const[ isloading,setIsloading] =useState(true)
     const [articles,setArticles]= useState([])
     const topicQuery = searchParams.get("topic")
@@ -13,20 +14,27 @@ const ArticleList =({topics}) =>{
         setIsloading(true)
         setArticles([])
         setSearchParams({topic: topic.slug})
-        console.log(topic)
         
     }
+    const handleInput =(event)=>{
+      const sort_by = event.target.value 
+      setSearchParams({...searchParams, sort_by:sort_by})
+    }
     useEffect(()=>{
-        console.log(query,"----useeffect")
         
         getArticles(query).then(({data}) =>{
                 setArticles(data.articles)
                 setQuery(`?${searchParams.toString()}`)
                 setIsloading(false)
+            }).catch(err =>{
+                
+             setErrMsg(err.message)
             })
         },[query,setSearchParams])
     if(isloading){
         return <h2>loading...</h2>
+    }else if(errMsg){
+     return <h2>{errMsg}</h2>
     }
     
 return  <section id="article-list-section">
@@ -41,6 +49,12 @@ return  <section id="article-list-section">
         }
 
     </ul>
+    <form action=""><select name="Sort By" id="sort-by-select" onClick={()=>{handleInput(event)}} >
+        <option value="created_at">Date</option>
+        <option value="comment_count">Comment Count</option>
+        <option value="votes">Votes</option>
+    </select></form>
+    
     <ul id="article-list">
 {    
 articles.map(article =>{
